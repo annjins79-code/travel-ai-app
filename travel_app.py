@@ -2,24 +2,48 @@ import streamlit as st
 import random
 
 # Page config
-st.set_page_config(page_title="AI Travel Planner", layout="centered")
+st.set_page_config(page_title="AI Travel Planner", layout="wide")
 
-# Custom styling 🎨
+# 🔥 Custom UI Styling
 st.markdown("""
     <style>
-    body {
-        background-color: #f0f8ff;
+    .stApp {
+        background: linear-gradient(to right, #89f7fe, #66a6ff);
     }
-    .title {
-        font-size: 40px;
+
+    h1 {
+        color: #ffffff;
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    h2, h3 {
+        color: #2c3e50;
+        font-family: 'Verdana', sans-serif;
+    }
+
+    .stButton>button {
+        background-color: #ff7eb3;
+        color: white;
+        border-radius: 10px;
+        height: 3em;
+        width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .stSelectbox label, .stSlider label {
+        font-size: 18px;
         font-weight: bold;
         color: #2c3e50;
-        text-align: center;
     }
+
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="title">🌍 AI Mood-Based Travel Planner</p>', unsafe_allow_html=True)
+# Title
+st.title("🌍 AI Mood-Based Travel Planner")
 st.write("✨ Discover underrated places in India based on your mood")
 
 # Inputs
@@ -27,8 +51,6 @@ mood = st.selectbox("Select your mood", ["Relax", "Adventure", "Solo Healing"])
 preference = st.selectbox("Preference", ["Beach", "Mountains", "Nature"])
 
 if st.button("Generate Plan"):
-
-    places = []
 
     if mood == "Relax" and preference == "Beach":
         places = [
@@ -58,26 +80,21 @@ if st.button("Generate Plan"):
         st.markdown(f"## 🌟 {place}")
         st.image(image)
 
-        # Hidden gem score 💎
         score = random.randint(7, 10)
         st.write(f"💎 Hidden Gem Score: {score}/10")
 
-        # 7-day itinerary
         st.write("🗺️ 7-Day Itinerary:")
         itinerary = [
-            "Day 1: Arrival & local exploration",
-            "Day 2: Visit major attractions",
+            "Day 1: Arrival & exploration",
+            "Day 2: Major attractions",
             "Day 3: Adventure activities",
-            "Day 4: Explore hidden spots",
+            "Day 4: Hidden gems",
             "Day 5: Cultural experience",
             "Day 6: Relax & shopping",
-            "Day 7: Wrap up & departure"
+            "Day 7: Departure"
         ]
 
         for day in itinerary:
             st.write(day)
-
-        st.write("💡 Why visit?")
-        st.write("Perfect match for your mood with unique experiences and fewer crowds.")
 
         st.markdown("---")
