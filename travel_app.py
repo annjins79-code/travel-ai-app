@@ -14,7 +14,7 @@ if st.button("Generate Plan"):
 
     if mood == "Relax" and preference == "Beach":
         place = "Gokarna"
-        image = "https://upload.wikimedia.org/wikipedia/commons/6/6e/Gokarna_beach.jpg"
+        image = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
         itinerary = [
             "Day 1: Relax at Kudle Beach",
             "Day 2: Beach trekking & sunset",
@@ -23,7 +23,7 @@ if st.button("Generate Plan"):
 
     elif mood == "Adventure" and preference == "Mountains":
         place = "Spiti Valley"
-        image = "https://upload.wikimedia.org/wikipedia/commons/3/3e/Spiti_Valley.jpg"
+        image = "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
         itinerary = [
             "Day 1: Arrival & acclimatization",
             "Day 2: Visit monasteries",
@@ -32,7 +32,7 @@ if st.button("Generate Plan"):
 
     else:
         place = "Varkala"
-        image = "https://upload.wikimedia.org/wikipedia/commons/9/9f/Varkala_beach.jpg"
+        image = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
         itinerary = [
             "Day 1: Cliff walk",
             "Day 2: Ayurvedic spa",
@@ -40,8 +40,16 @@ if st.button("Generate Plan"):
         ]
 
     st.subheader(f"📍 Destination: {place}")
-    st.image(image)
+    
+    try:
+        st.image(image, caption=place)
+    except:
+        st.write("Image not available")
 
     st.subheader("🗺️ Itinerary")
     for day in itinerary:
         st.write(day)
+
+    # NEW FEATURE 🔥
+    st.subheader("💡 Why this place?")
+    st.write("This destination matches your mood and preference, offering a unique and less crowded experience.")
