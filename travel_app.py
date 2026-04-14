@@ -1,55 +1,83 @@
 import streamlit as st
+import random
 
-st.set_page_config(page_title="AI Travel Planner")
+# Page config
+st.set_page_config(page_title="AI Travel Planner", layout="centered")
 
-st.title("🌍 AI Mood-Based Travel Planner")
-st.write("Discover underrated places in India based on your mood ✨")
+# Custom styling 🎨
+st.markdown("""
+    <style>
+    body {
+        background-color: #f0f8ff;
+    }
+    .title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #2c3e50;
+        text-align: center;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="title">🌍 AI Mood-Based Travel Planner</p>', unsafe_allow_html=True)
+st.write("✨ Discover underrated places in India based on your mood")
 
 # Inputs
 mood = st.selectbox("Select your mood", ["Relax", "Adventure", "Solo Healing"])
 preference = st.selectbox("Preference", ["Beach", "Mountains", "Nature"])
-days = st.slider("Number of days", 1, 7)
 
 if st.button("Generate Plan"):
 
+    places = []
+
     if mood == "Relax" and preference == "Beach":
-        place = "Gokarna"
-        image = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-        itinerary = [
-            "Day 1: Relax at Kudle Beach",
-            "Day 2: Beach trekking & sunset",
-            "Day 3: Cafe hopping"
+        places = [
+            ("Gokarna", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"),
+            ("Varkala", "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"),
+            ("Marari Beach", "https://images.unsplash.com/photo-1500375592092-40eb2168fd21")
         ]
 
     elif mood == "Adventure" and preference == "Mountains":
-        place = "Spiti Valley"
-        image = "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-        itinerary = [
-            "Day 1: Arrival & acclimatization",
-            "Day 2: Visit monasteries",
-            "Day 3: Trekking"
+        places = [
+            ("Spiti Valley", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
+            ("Tawang", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429"),
+            ("Kasol", "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0")
         ]
 
     else:
-        place = "Varkala"
-        image = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-        itinerary = [
-            "Day 1: Cliff walk",
-            "Day 2: Ayurvedic spa",
-            "Day 3: Beach sunset"
+        places = [
+            ("Coorg", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
+            ("Hampi", "https://images.unsplash.com/photo-1524492449090-1d9a1a5b3c0d"),
+            ("Wayanad", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429")
         ]
 
-    st.subheader(f"📍 Destination: {place}")
-    
-    try:
-        st.image(image, caption=place)
-    except:
-        st.write("Image not available")
+    st.subheader("📍 Recommended Destinations")
 
-    st.subheader("🗺️ Itinerary")
-    for day in itinerary:
-        st.write(day)
+    for place, image in places:
 
-    # NEW FEATURE 🔥
-    st.subheader("💡 Why this place?")
-    st.write("This destination matches your mood and preference, offering a unique and less crowded experience.")
+        st.markdown(f"## 🌟 {place}")
+        st.image(image)
+
+        # Hidden gem score 💎
+        score = random.randint(7, 10)
+        st.write(f"💎 Hidden Gem Score: {score}/10")
+
+        # 7-day itinerary
+        st.write("🗺️ 7-Day Itinerary:")
+        itinerary = [
+            "Day 1: Arrival & local exploration",
+            "Day 2: Visit major attractions",
+            "Day 3: Adventure activities",
+            "Day 4: Explore hidden spots",
+            "Day 5: Cultural experience",
+            "Day 6: Relax & shopping",
+            "Day 7: Wrap up & departure"
+        ]
+
+        for day in itinerary:
+            st.write(day)
+
+        st.write("💡 Why visit?")
+        st.write("Perfect match for your mood with unique experiences and fewer crowds.")
+
+        st.markdown("---")
