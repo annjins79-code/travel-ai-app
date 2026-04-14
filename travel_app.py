@@ -4,39 +4,33 @@ import random
 # Page config
 st.set_page_config(page_title="AI Travel Planner", layout="wide")
 
-# 🔥 Custom UI Styling
+# 🌿 Softer UI Styling
 st.markdown("""
     <style>
     .stApp {
-        background: linear-gradient(to right, #89f7fe, #66a6ff);
+        background: linear-gradient(to right, #fdfbfb, #ebedee);
     }
 
     h1 {
-        color: #ffffff;
+        color: #2c3e50;
         text-align: center;
-        font-size: 50px;
-        font-family: 'Trebuchet MS', sans-serif;
+        font-size: 45px;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     h2, h3 {
-        color: #2c3e50;
-        font-family: 'Verdana', sans-serif;
+        color: #34495e;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     .stButton>button {
-        background-color: #ff7eb3;
+        background-color: #4CAF50;
         color: white;
-        border-radius: 10px;
+        border-radius: 8px;
         height: 3em;
         width: 100%;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
-    }
-
-    .stSelectbox label, .stSlider label {
-        font-size: 18px;
-        font-weight: bold;
-        color: #2c3e50;
     }
 
     </style>
@@ -54,30 +48,30 @@ if st.button("Generate Plan"):
 
     if mood == "Relax" and preference == "Beach":
         places = [
-            ("Gokarna", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"),
-            ("Varkala", "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"),
-            ("Marari Beach", "https://images.unsplash.com/photo-1500375592092-40eb2168fd21")
+            ("Gokarna", "Karnataka", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"),
+            ("Varkala", "Kerala", "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"),
+            ("Marari Beach", "Kerala", "https://images.unsplash.com/photo-1500375592092-40eb2168fd21")
         ]
 
     elif mood == "Adventure" and preference == "Mountains":
         places = [
-            ("Spiti Valley", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
-            ("Tawang", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429"),
-            ("Kasol", "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0")
+            ("Spiti Valley", "Himachal Pradesh", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
+            ("Tawang", "Arunachal Pradesh", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429"),
+            ("Kasol", "Himachal Pradesh", "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0")
         ]
 
     else:
         places = [
-            ("Coorg", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
-            ("Hampi", "https://images.unsplash.com/photo-1524492449090-1d9a1a5b3c0d"),
-            ("Wayanad", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429")
+            ("Coorg", "Karnataka", "https://images.unsplash.com/photo-1501785888041-af3ef285b470"),
+            ("Hampi", "Karnataka", "https://images.unsplash.com/photo-1524492449090-1d9a1a5b3c0d"),
+            ("Wayanad", "Kerala", "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429")
         ]
 
     st.subheader("📍 Recommended Destinations")
 
-    for place, image in places:
+    for place, state, image in places:
 
-        st.markdown(f"## 🌟 {place}")
+        st.markdown(f"### 🌟 {place}, {state}")
         st.image(image)
 
         score = random.randint(7, 10)
